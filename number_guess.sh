@@ -13,7 +13,8 @@ USERNAME_QUERY_RESULT=$($PSQL "SELECT username FROM users WHERE username='$USERN
 
 if [[ -z $USERNAME_QUERY_RESULT ]]
 then
-  echo something # added to make the conditional work
+  INSERT_RESULT=$($PSQL "INSERT INTO users(username, games_played) VALUES('$USERNAME', 0);")
+  echo "Welcome, $USERNAME! It looks like this is your first time here." 
 else
   GAMES_PLAYED=$($PSQL "SELECT games_played FROM users WHERE username='$USERNAME';")
   BEST_GAME=$($PSQL "SELECT best_game FROM users WHERE username='$USERNAME';")
