@@ -71,3 +71,11 @@ then
 else
   echo -e "\nYou guessed it in $GUESS_COUNT tries.\nThe secret number was $RANDOM_NUMBER. Nice job!"
 fi
+
+if [[ -z $BEST_GAME ]]
+then
+  UPDATE_BEST_GAME=$($PSQL "UPDATE users SET best_game=$GUESS_COUNT WHERE username='$USERNAME';")
+elif [[ $BEST_GAME -gt $GUESS_COUNT ]]
+then
+  UPDATE_BEST_GAME=$($PSQL "UPDATE users SET best_game=$GUESS_COUNT WHERE username='$USERNAME';")
+fi
