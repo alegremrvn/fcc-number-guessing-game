@@ -33,8 +33,11 @@ else
   fi
 fi
 
+GUESS_COUNT=0
+
 echo -e "\nGuess the secret number between 1 and 1000:"
 read GUESS
+(( GUESS_COUNT++ ))
 
 if [[ ! -z $GUESS ]]
 then
@@ -49,12 +52,15 @@ do
     then
       echo "It's higher than that, guess again:"
       read GUESS
+      (( GUESS_COUNT++ ))
     else
       echo "It's lower than that, guess again:"
       read GUESS
+      (( GUESS_COUNT++ ))
     fi
   else
     echo "That is not an integer, guess again:"
     read GUESS
+    (( GUESS_COUNT++ ))
   fi
 done
