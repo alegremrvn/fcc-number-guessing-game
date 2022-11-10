@@ -35,3 +35,8 @@ fi
 
 echo -e "\nGuess the secret number between 1 and 1000:"
 read GUESS
+
+if [[ ! -z $GUESS ]]
+then
+  GAMES_PLAYED_UPDATE_RESULT=$($PSQL "UPDATE users SET games_played = games_played + 1 WHERE username='$USERNAME';")
+fi
