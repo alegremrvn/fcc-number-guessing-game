@@ -64,3 +64,10 @@ do
     (( GUESS_COUNT++ ))
   fi
 done
+
+if [[ $GUESS_COUNT == 1 ]]
+then
+  echo -e "\nYOU GUESSED IT WITH ONLY ONE TRY!!!\nThe secret number was $RANDOM_NUMBER. AMAZING!!!"
+else
+  echo -e "\nYou guessed it in $GUESS_COUNT tries.\nThe secret number was $RANDOM_NUMBER. Nice job!"
+fi
