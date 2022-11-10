@@ -32,3 +32,6 @@ else
     took $BEST_GAME guesses."
   fi
 fi
+
+echo -e "\nGuess the secret number between 1 and 1000:"
+read GUESS
