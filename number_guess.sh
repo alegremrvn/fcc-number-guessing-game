@@ -40,3 +40,21 @@ if [[ ! -z $GUESS ]]
 then
   GAMES_PLAYED_UPDATE_RESULT=$($PSQL "UPDATE users SET games_played = games_played + 1 WHERE username='$USERNAME';")
 fi
+
+until [[ $RANDOM_NUMBER == $GUESS ]]
+do
+  if [[ $GUESS =~ ^[0-9]+$ ]]
+  then
+    if [[ $GUESS -lt $RANDOM_NUMBER ]]
+    then
+      echo "It's higher than that, guess again:"
+      read GUESS
+    else
+      echo "It's lower than that, guess again:"
+      read GUESS
+    fi
+  else
+    echo "That is not an integer, guess again:"
+    read GUESS
+  fi
+done
